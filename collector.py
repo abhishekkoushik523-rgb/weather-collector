@@ -49,7 +49,7 @@ def parse_and_store(data):
 
     # Extract fields
     weather_doc = {
-        "source": "OpenWeatherMap",
+        "source": { "type": "api", "platform": "OpenWeatherMap", "user_id": None},
         "city": data.get("name"),
         "country": data.get("sys", {}).get("country"),
         "timestamp": datetime.utcnow(),  # collection time

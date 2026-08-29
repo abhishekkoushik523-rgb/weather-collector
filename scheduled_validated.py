@@ -137,7 +137,7 @@ def collect_owm():
         
         doc = {
             "report_id": f"OWM_{datetime.now().strftime('%Y%m%d%H%M%S')}_{city[:3]}",
-            "text": f"Weather in {city}: {data['weather'][0]['description']}, {temp_c}°C",
+            "text": f"{data['weather'][0]['description'].capitalize()} weather reported in {city} with temperature {temp_c}°C",
             "source": {"type": "api", "platform": "OpenWeatherMap", "user_id": None},
             "location": {"city": city, "state": None, "latitude": data.get("coord", {}).get("lat"), "longitude": data.get("coord", {}).get("lon")},
             "timestamp": dt.isoformat() + "Z",
@@ -200,7 +200,7 @@ def collect_om():
         
         doc = {
             "report_id": f"OM_{datetime.now().strftime('%Y%m%d%H%M%S')}_{city[:3]}",
-            "text": f"Weather in {city}: {current.get('temperature')}°C, wind {current.get('windspeed')} km/h",
+            "text": f"{current.get('temperature')}°C and wind {current.get('windspeed')} km/h reported in {city}",
             "source": {"type": "api", "platform": "open-meteo", "user_id": None},
             "location": {"city": city, "state": None, "latitude": lat, "longitude": lon},
             "timestamp": current.get("time") + "Z",
