@@ -1,0 +1,10 @@
+pymongo
+python-dotenv
+pandas
+numpy
+sentence-transformers
+scikit-learn
+geopy
+Pillow
+fastapi
+uvicorn
