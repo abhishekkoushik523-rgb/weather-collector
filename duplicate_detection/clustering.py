@@ -1,77 +1,32 @@
 """
 duplicate_detection/clustering.py
 
-Determines whether reports are likely duplicates using:
-1. Semantic text similarity
-2. Geographic distance
-3. Time difference
+Groups reports that have already been identified as duplicates
+using DBSCAN clustering.
 
-Then groups duplicate reports using DBSCAN.
+The duplicate decision itself is handled by duplicate_checker.py.
+This file is responsible only for grouping duplicate reports.
 """
 
-from datetime import datetime, timezone
 from sklearn.cluster import DBSCAN
-import numpy as np
-
-
-# Initial thresholds.
-# These will be tuned later using real project data.
-SIMILARITY_THRESHOLD = 0.70
-DISTANCE_THRESHOLD_KM = 5.0
-TIME_THRESHOLD_MINUTES = 180
-
-
-def time_difference_minutes(timestamp_a: str, timestamp_b: str) -> float:
-    """
-    Calculate the time difference between two report timestamps.
-
-    Returns:
-        Difference in minutes.
-    """
-
-    time_a = datetime.fromisoformat(
-        timestamp_a.replace("Z", "+00:00")
-    )
-
-    time_b = datetime.fromisoformat(
-        timestamp_b.replace("Z", "+00:00")
-    )
-
-    return abs((time_a - time_b).total_seconds()) / 60
-
-
-def are_duplicates(
-    similarity: float,
-    distance_km: float,
-    time_difference: float
-) -> bool:
-    """
-    Decide whether two reports are likely duplicates.
-
-    A pair is considered a duplicate when:
-    - semantic similarity is high
-    - locations are close
-    - reports happened within the time window
-    """
-
-    return (
-        similarity >= SIMILARITY_THRESHOLD
-        and distance_km <= DISTANCE_THRESHOLD_KM
-        and time_difference <= TIME_THRESHOLD_MINUTES
-    )
 
 
 def cluster_duplicate_reports(duplicate_matrix):
     """
     Group duplicate reports using DBSCAN.
 
-    duplicate_matrix:
-        A matrix where:
-        0 = reports are duplicates
-        1 = reports are not duplicates
+    Parameters:
+        duplicate_matrix:
+            A square matrix where:
+            - 0 = reports are considered duplicates
+            - 1 = reports are not considered duplicates
 
     Returns:
-        Cluster labels.
+        numpy.ndarray:
+            Cluster label for each report.
+
+            Reports with the same cluster label belong to the
+            same duplicate/event group.
     """
 
     dbscan = DBSCAN(
@@ -86,22 +41,24 @@ def cluster_duplicate_reports(duplicate_matrix):
 
 
 if __name__ == "__main__":
-    # Simple test of time difference
-    timestamp_a = "2026-08-29T10:00:00Z"
-    timestamp_b = "2026-08-29T10:30:00Z"
+    """
+    Simple standalone test.
 
-    difference = time_difference_minutes(
-        timestamp_a,
-        timestamp_b
-    )
+    0 = duplicate relationship
+    1 = not a duplicate relationship
 
-    print("Time difference:", difference, "minutes")
+    Expected result:
+    - Reports 1, 2, and 3 → same cluster
+    - Report 4 → separate cluster
+    """
 
-    # Test duplicate decision
-    result = are_duplicates(
-        similarity=0.7664,
-        distance_km=0.039,
-        time_difference=difference
-    )
+    duplicate_matrix = [
+        [0, 0, 1, 1],
+        [0, 0, 0, 1],
+        [1, 0, 0, 1],
+        [1, 1, 1, 0]
+    ]
 
-    print("Are reports duplicates?", result)
+    labels = cluster_duplicate_reports(duplicate_matrix)
+
+    print("Cluster labels:", labels)

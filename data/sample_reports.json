@@ -2,101 +2,201 @@
   {
     "report_id": "RPT_001",
     "text": "Heavy rain reported in Whitefield, Bengaluru",
+    "source": {
+      "type": "citizen",
+      "platform": "web",
+      "user_id": "USER_001"
+    },
     "location": {
       "city": "Bengaluru",
+      "state": "Karnataka",
       "latitude": 13.0078,
       "longitude": 77.7512
     },
-    "timestamp": "2026-08-29T10:00:00Z"
+    "timestamp": "2026-08-29T10:00:00Z",
+    "media": {
+      "has_photo": true,
+      "media_url": null
+    }
   },
   {
     "report_id": "RPT_002",
     "text": "Whitefield is experiencing heavy rainfall",
+    "source": {
+      "type": "citizen",
+      "platform": "web",
+      "user_id": "USER_002"
+    },
     "location": {
       "city": "Bengaluru",
+      "state": "Karnataka",
       "latitude": 13.0080,
       "longitude": 77.7515
     },
-    "timestamp": "2026-08-29T10:30:00Z"
+    "timestamp": "2026-08-29T10:30:00Z",
+    "media": {
+      "has_photo": false,
+      "media_url": null
+    }
   },
   {
     "report_id": "RPT_003",
     "text": "Roads are flooded after heavy rain in Whitefield",
+    "source": {
+      "type": "citizen",
+      "platform": "web",
+      "user_id": "USER_003"
+    },
     "location": {
       "city": "Bengaluru",
+      "state": "Karnataka",
       "latitude": 13.0082,
       "longitude": 77.7518
     },
-    "timestamp": "2026-08-29T11:00:00Z"
+    "timestamp": "2026-08-29T11:00:00Z",
+    "media": {
+      "has_photo": true,
+      "media_url": null
+    }
   },
   {
     "report_id": "RPT_004",
     "text": "Extreme heat reported across Delhi",
+    "source": {
+      "type": "citizen",
+      "platform": "web",
+      "user_id": "USER_004"
+    },
     "location": {
       "city": "Delhi",
+      "state": "Delhi",
       "latitude": 28.6139,
       "longitude": 77.2090
     },
-    "timestamp": "2026-08-29T12:00:00Z"
+    "timestamp": "2026-08-29T12:00:00Z",
+    "media": {
+      "has_photo": false,
+      "media_url": null
+    }
   },
   {
     "report_id": "RPT_005",
     "text": "Dense fog observed in Delhi this morning",
+    "source": {
+      "type": "citizen",
+      "platform": "web",
+      "user_id": "USER_005"
+    },
     "location": {
       "city": "Delhi",
+      "state": "Delhi",
       "latitude": 28.6200,
       "longitude": 77.2100
     },
-    "timestamp": "2026-08-29T07:00:00Z"
+    "timestamp": "2026-08-29T07:00:00Z",
+    "media": {
+      "has_photo": true,
+      "media_url": null
+    }
   },
   {
     "report_id": "RPT_006",
     "text": "Strong winds reported in Mumbai",
+    "source": {
+      "type": "citizen",
+      "platform": "web",
+      "user_id": "USER_006"
+    },
     "location": {
       "city": "Mumbai",
+      "state": "Maharashtra",
       "latitude": 19.0760,
       "longitude": 72.8777
     },
-    "timestamp": "2026-08-29T14:00:00Z"
+    "timestamp": "2026-08-29T14:00:00Z",
+    "media": {
+      "has_photo": false,
+      "media_url": null
+    }
   },
   {
     "report_id": "RPT_007",
     "text": "Thunderstorm with lightning reported in Chennai",
+    "source": {
+      "type": "citizen",
+      "platform": "web",
+      "user_id": "USER_007"
+    },
     "location": {
       "city": "Chennai",
+      "state": "Tamil Nadu",
       "latitude": 13.0827,
       "longitude": 80.2707
     },
-    "timestamp": "2026-08-29T15:00:00Z"
+    "timestamp": "2026-08-29T15:00:00Z",
+    "media": {
+      "has_photo": true,
+      "media_url": null
+    }
   },
   {
     "report_id": "RPT_008",
     "text": "Dust storm reported near Jaipur",
+    "source": {
+      "type": "citizen",
+      "platform": "web",
+      "user_id": "USER_008"
+    },
     "location": {
       "city": "Jaipur",
+      "state": "Rajasthan",
       "latitude": 26.9124,
       "longitude": 75.7873
     },
-    "timestamp": "2026-08-29T16:00:00Z"
+    "timestamp": "2026-08-29T16:00:00Z",
+    "media": {
+      "has_photo": true,
+      "media_url": null
+    }
   },
   {
     "report_id": "RPT_009",
     "text": "Heavy rainfall causing waterlogging in Whitefield",
+    "source": {
+      "type": "citizen",
+      "platform": "web",
+      "user_id": "USER_009"
+    },
     "location": {
       "city": "Bengaluru",
+      "state": "Karnataka",
       "latitude": 13.0079,
       "longitude": 77.7514
     },
-    "timestamp": "2026-08-29T10:45:00Z"
+    "timestamp": "2026-08-29T10:45:00Z",
+    "media": {
+      "has_photo": true,
+      "media_url": null
+    }
   },
   {
     "report_id": "RPT_010",
     "text": "Severe heatwave conditions in Delhi",
+    "source": {
+      "type": "citizen",
+      "platform": "web",
+      "user_id": "USER_010"
+    },
     "location": {
       "city": "Delhi",
+      "state": "Delhi",
       "latitude": 28.6145,
       "longitude": 77.2085
     },
-    "timestamp": "2026-08-29T12:30:00Z"
+    "timestamp": "2026-08-29T12:30:00Z",
+    "media": {
+      "has_photo": false,
+      "media_url": null
+    }
   }
 ]
