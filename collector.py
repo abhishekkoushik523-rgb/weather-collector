@@ -23,8 +23,8 @@ CITIES = [
     "Kolkata"
 ]
 
-# Connect to MongoDB Atlas
-client = pymongo.MongoClient(MONGO_URI)
+# Connect to MongoDB Atlas (with SSL fix)
+client = pymongo.MongoClient(MONGO_URI, tlsAllowInvalidCertificates=True)
 db = client["weather_db"]
 collection = db["weather_data"]
 
@@ -47,12 +47,15 @@ def parse_and_store(data):
     if not data:
         return None
 
-    # Extract fields
+    # Extract city name BEFORE the try block
+    city = data.get("name")
+
+    # Build document
     weather_doc = {
-        "source": { "type": "api", "platform": "OpenWeatherMap", "user_id": None},
-        "city": data.get("name"),
+        "source": "OpenWeatherMap",
+        "city": city,
         "country": data.get("sys", {}).get("country"),
-        "timestamp": datetime.utcnow(),  # collection time
+        "timestamp": datetime.utcnow(),
         "api_timestamp": datetime.fromtimestamp(data.get("dt", 0)),
         "temperature": round(data["main"]["temp"] - 273.15, 1),
         "feels_like": round(data["main"]["feels_like"] - 273.15, 1),
@@ -63,13 +66,13 @@ def parse_and_store(data):
         "wind_speed": data["wind"].get("speed"),
         "wind_deg": data["wind"].get("deg"),
         "clouds": data["clouds"].get("all"),
-        "raw_data": data  # keep raw for debugging
+        "raw_data": data
     }
 
     # Insert into MongoDB
     try:
         result = collection.insert_one(weather_doc)
-        print(f"✅ Saved {weather_doc['city']} | Temp: {weather_doc['temperature']}°C | ID: {result.inserted_id}")
+        print(f"✅ Saved {city} | Temp: {weather_doc['temperature']}°C | ID: {result.inserted_id}")
         return result.inserted_id
     except Exception as e:
         print(f"❌ Database error for {city}: {e}")

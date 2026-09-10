@@ -6,7 +6,7 @@ import { generateMockReports } from './mockData'
 // Everything else in the app calls the functions below — nothing in your
 // components needs to change when you flip this.
 // ---------------------------------------------------------------------------
-const USE_MOCK = true
+const USE_MOCK = false
 const API_BASE_URL = 'http://localhost:8000' // update once backend is deployed
 
 const httpClient = axios.create({ baseURL: API_BASE_URL, timeout: 8000 })
